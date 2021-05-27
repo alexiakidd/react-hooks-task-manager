@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react'
 import GerenciadorTarefas from './gerenciador-tarefas'
+import ReactDOM from 'react-dom'
 
-test('renders learn react link', () => {
-	render(<GerenciadorTarefas />)
-	const linkElement = screen.getByText(/learn react/i)
-	expect(linkElement).toBeInTheDocument()
+it('deve renderizar o projeto sem erros', () => {
+	const div = document.createElement('div')
+	ReactDOM.render(<GerenciadorTarefas />, div)
+	ReactDOM.unmountComponentAtNode(div)
 })
