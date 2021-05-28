@@ -5,11 +5,25 @@ import { navigate, A } from 'hookrouter'
 // import { Container } from './styles';
 
 function CadastrarTarefa() {
+	const [tarefa, setTarefa] = useState('')
+	const [formValidado, setformValidado] = useState(false)
+	const [exibirModal, setexibirModal] = useState(false)
+
+	function cadastrar(event) {}
+
+	function handleTxtTarefa(event) {
+		setTarefa(event.target.value)
+	}
+
+	function handleFecharModal() {
+		navigate('/')
+	}
+
 	return (
 		<div>
 			<h3 className="text-center">Cadastrar</h3>
 			<Jumbotron>
-				<Form>
+				<Form validated={formValidado} noValidate onSubmit={cadastrar}>
 					<Form.Group>
 						<Form.Label>Tarefa</Form.Label>
 						<Form.Control
@@ -18,6 +32,8 @@ function CadastrarTarefa() {
 							minLength="5"
 							maxLength="100"
 							required
+							value={tarefa}
+							onChange={handleTxtTarefa}
 						/>
 					</Form.Group>
 					<Form.Control.Feedback type="invalid">
@@ -33,13 +49,15 @@ function CadastrarTarefa() {
 						</A>
 					</Form.Group>
 				</Form>
-				<Modal show={false}>
+				<Modal show={true} onHide={handleFecharModal}>
 					<Modal.Header>
-						<Modal.Title>Suceeso</Modal.Title>
+						<Modal.Title>Sucesso</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>Tarefa adicionada com sucesso!</Modal.Body>
 					<Modal.Footer>
-						<Button variant="success">Continuar</Button>
+						<Button onClick={handleFecharModal} variant="success">
+							Continuar
+						</Button>
 					</Modal.Footer>
 				</Modal>
 			</Jumbotron>

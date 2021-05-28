@@ -11,6 +11,6 @@ const routes = {
 }
 
 function GerenciadorTarefas() {
-	return useRoutes(routes)
+	return <div className="container"> {useRoutes(routes)}</div>
 }
 export default GerenciadorTarefas

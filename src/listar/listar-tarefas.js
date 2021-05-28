@@ -6,7 +6,9 @@ import React from 'react'
 function ListarTarefas() {
 	return (
 		<A href="/cadastrar">
-			<div className="btn btn-success btn-sm">Nova tarefa</div>
+			<div className="text-center">
+				<div className="btn btn-success btn-sm ">Nova tarefa</div>
+			</div>
 		</A>
 	)
 }
