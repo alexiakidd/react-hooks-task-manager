@@ -15,8 +15,8 @@ function CadastrarTarefa() {
 		setformValidado(true)
 		if (event.currentTarget.checkValidity() === true) {
 			//obtem as tarefas
-			const tarefasDb = localStrorage['tarefas']
-			const tarefas = tarefasDb ? JSON.parse(tarefasDB) : []
+			const tarefasDb = localStorage['tarefas']
+			const tarefas = tarefasDb ? JSON.parse(tarefasDb) : []
 
 			//persiste a tarefa
 			tarefas.push(new Tarefa(new Date().getTime(), tarefa, false))
