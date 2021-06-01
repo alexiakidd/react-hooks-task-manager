@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Form, Jumbotron, Modal } from 'react-bootstrap'
 import { navigate, A } from 'hookrouter'
+import Tarefa from '../models/tarefa.model'
 
 // import { Container } from './styles';
 
@@ -9,7 +10,20 @@ function CadastrarTarefa() {
 	const [formValidado, setformValidado] = useState(false)
 	const [exibirModal, setexibirModal] = useState(false)
 
-	function cadastrar(event) {}
+	function cadastrar(event) {
+		event.preventDefault()
+		setformValidado(true)
+		if (event.currentTarget.checkValidity() === true) {
+			//obtem as tarefas
+			const tarefasDb = localStrorage['tarefas']
+			const tarefas = tarefasDb ? JSON.parse(tarefasDB) : []
+
+			//persiste a tarefa
+			tarefas.push(new Tarefa(new Date().getTime(), tarefa, false))
+			localStorage['tarefas'] = JSON.stringify(tarefas)
+			setexibirModal(true)
+		}
+	}
 
 	function handleTxtTarefa(event) {
 		setTarefa(event.target.value)
